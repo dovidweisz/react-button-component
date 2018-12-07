@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import React, {
+import * as React from "react";
+import {
 	ButtonHTMLAttributes,
 	HTMLAttributes,
 	InputHTMLAttributes,
 } from "react";
-import { withStyles } from "src/client/App/common/WithStyleAndLocale";
 
 const classes: {
 	[key: string]: string;
@@ -64,7 +64,7 @@ const _ButtonBase: React.SFC<
 	return children({ ...otherAttributes, className, disabled });
 };
 
-export const ButtonBase = withStyles(classes)(_ButtonBase);
+export const ButtonBase = _ButtonBase;
 
 export const Button = (props: IButtonProps) => {
 	const { children, ...otherAttributes } = props;
