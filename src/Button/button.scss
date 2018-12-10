@@ -17,7 +17,7 @@ $bh-button-colors: (
 	secondary: $blue $white #233c5b,
 	tertiary: $water #1a5888 #233c5b,
 	// tertiary: transparent $blue $blue,
-		// tertiaryAlt: transparent $midnight $midnight,,,,,,,,,,,,,,,,,
+		// tertiaryAlt: transparent $midnight $midnight,,,,,,,,,,,,,,,,,,
 );
 $bh-default-button-color: primary !default;
 
@@ -93,7 +93,8 @@ $bh-default-button-color: primary !default;
 		}
 	}
 
-	&.active {
+	&.active,
+	&.active:hover {
 		background-color: transparent;
 		border-color: $blue;
 		color: $blue;
