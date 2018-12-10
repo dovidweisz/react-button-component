@@ -41,7 +41,6 @@ const _ButtonBase: React.SFC<
 > = ({
 	color,
 	active,
-	ghost,
 	disabled,
 	small,
 	width,
@@ -59,7 +58,7 @@ const _ButtonBase: React.SFC<
 		parentClassName,
 		{
 			[classes.disabled]: disabled,
-			[classes.ghost]: ghost,
+			[classes.ghost]: color === "pinky" || color === "blinky",
 			[classes.small]: small,
 			[widthClass]: !small && !!width,
 			[classes.large]: !small && !!large,

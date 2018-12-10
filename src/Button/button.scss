@@ -17,7 +17,7 @@ $bh-button-colors: (
 	secondary: $blue $white #233c5b,
 	tertiary: $water #1a5888 #233c5b,
 	// tertiary: transparent $blue $blue,
-		// tertiaryAlt: transparent $midnight $midnight,,,,,,,,,,,,,,,,,,
+		// tertiaryAlt: transparent $midnight $midnight,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 $bh-default-button-color: primary !default;
 
@@ -107,5 +107,55 @@ $bh-default-button-color: primary !default;
 		background-color: $vog;
 		color: $whale;
 		border-color: $whale;
+	}
+
+	&.ghost {
+		background-color: transparent;
+
+		&:hover {
+			background-color: $cesar;
+		}
+
+		&.disabled,
+		&[disabled],
+		&.disabled:hover,
+		&[disabled]:hover {
+			background-color: $white;
+			color: $whale;
+			border: 1px solid $vog;
+		}
+	}
+
+	&.pinky {
+		color: $midnight;
+		border-color: $whale;
+
+		&.active,
+		&.active:hover {
+			background-color: rgba($sruli, 0.3);
+			border: 2px solid $sruli;
+		}
+
+		&:hover {
+			background-color: $cesar;
+			border: 2px solid $sruli;
+		}
+	}
+
+	&.blinky {
+		color: $blue;
+		border-color: $blue;
+
+		&.active,
+		&.active:hover {
+			background-color: rgba($blue, 0.3);
+			border: 1px solid rgba($blue, 0.3);
+			color: $midnight;
+		}
+
+		&:hover {
+			background-color: $cesar;
+			border: 2px solid #0f3451;
+		}
 	}
 }
