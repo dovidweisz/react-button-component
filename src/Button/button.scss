@@ -1,0 +1,102 @@
+@import "colors";
+
+$global-weight-bold: 600;
+$button-radius: 0;
+$button-margin: 0;
+
+$bh-button-height: 2.5em !default;
+$bh-button-default-weight: $global-weight-bold !default;
+
+@mixin sync-line-height($container-height) {
+	height: $container-height;
+	line-height: $container-height;
+}
+
+$bh-button-colors: (
+	primary: $hawaii,
+	primaryAlt: $blue,
+	secondary: $water #1a5888,
+	tertiary: transparent $blue $blue,
+	tertiaryAlt: transparent $midnight $midnight,
+);
+$bh-default-button-color: primary !default;
+
+@mixin bh-button {
+	@include bh-button-base;
+	@include sync-line-height($bh-button-height);
+	padding: 0 2em;
+	font-weight: $bh-button-default-weight;
+	border: rem-calc(1) solid;
+}
+@mixin bh-button-base {
+	// @include disable-mouse-outline; // requires whatinput js
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+	vertical-align: middle;
+	border-radius: $button-radius;
+	margin: $button-margin;
+}
+
+@mixin bh-style-button(
+	$background-color,
+	$color: $white,
+	$border-color: -unset
+) {
+	@if $border-color == -unset {
+		$border-color: $background-color;
+	}
+	background-color: $background-color;
+	color: $color;
+	border-color: $border-color;
+}
+
+.button {
+	@include bh-button;
+
+	// width modifiers
+	&.wide {
+		padding: 0 3em;
+	}
+
+	&.xWide {
+		padding: 0 4em;
+	}
+
+	&.fitWidth {
+		display: block;
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0;
+	}
+
+	// shrinks height and width
+	&.small {
+		@include sync-line-height(2em);
+		padding: 0 1em;
+	}
+
+	// expands height only
+	&.large {
+		padding: 0 4em;
+		@include sync-line-height(3em);
+	}
+	$-default-color-list: map_get($bh-button-colors, $bh-default-button-color);
+	@include bh-style-button($-default-color-list...);
+	@each $name, $color in $bh-button-colors {
+		&.#{$name} {
+			@if ($name != $bh-default-button-color) {
+				@include bh-style-button($color...);
+			}
+		}
+	}
+
+	&.disabled,
+	&[disabled] {
+		background-color: $vog;
+		color: $whale;
+		border-color: $whale;
+	}
+}
