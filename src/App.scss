@@ -22,6 +22,12 @@
 	}
 }
 
+.buttonRow {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
 .buttonContainer {
 	padding: 1em;
 }

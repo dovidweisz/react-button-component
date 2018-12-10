@@ -10,16 +10,19 @@ const classes: {
 	[key: string]: string;
 } = require("./button.scss");
 
+// import * as classes from "./button.scss";
+
 export type buttonColor =
 	| "primary"
-	| "primaryAlt"
 	| "secondary"
 	| "tertiary"
-	| "tertiaryAlt";
+	| "pinky"
+	| "blinky";
 
 export interface IButtonBaseProps {
 	color?: buttonColor;
 	ghost?: boolean;
+	active?: boolean;
 	disabled?: boolean;
 	small?: boolean;
 	width?: "wide" | "xWide" | "fitWidth";
@@ -37,6 +40,7 @@ const _ButtonBase: React.SFC<
 		HTMLAttributes<HTMLElement> & { children: (props: any) => any }
 > = ({
 	color,
+	active,
 	ghost,
 	disabled,
 	small,
@@ -59,6 +63,7 @@ const _ButtonBase: React.SFC<
 			[classes.small]: small,
 			[widthClass]: !small && !!width,
 			[classes.large]: !small && !!large,
+			[classes.active]: active,
 		},
 	]);
 	return children({ ...otherAttributes, className, disabled });

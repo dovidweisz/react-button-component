@@ -1,7 +1,7 @@
 @import "colors";
 
 $global-weight-bold: 600;
-$button-radius: 0;
+$button-radius: 3px;
 $button-margin: 0;
 
 $bh-button-height: 2.5em !default;
@@ -13,11 +13,11 @@ $bh-button-default-weight: $global-weight-bold !default;
 }
 
 $bh-button-colors: (
-	primary: $hawaii,
-	primaryAlt: $blue,
-	secondary: $water #1a5888,
-	tertiary: transparent $blue $blue,
-	tertiaryAlt: transparent $midnight $midnight,
+	primary: $hawaii $white #386283,
+	secondary: $blue $white #233c5b,
+	tertiary: $water #1a5888 #233c5b,
+	// tertiary: transparent $blue $blue,
+		// tertiaryAlt: transparent $midnight $midnight,,,,,,,,,,,,,,,,,
 );
 $bh-default-button-color: primary !default;
 
@@ -39,17 +39,17 @@ $bh-default-button-color: primary !default;
 	margin: $button-margin;
 }
 
-@mixin bh-style-button(
-	$background-color,
-	$color: $white,
-	$border-color: -unset
-) {
-	@if $border-color == -unset {
-		$border-color: $background-color;
-	}
+@mixin bh-style-button($background-color, $color, $hover-color) {
 	background-color: $background-color;
 	color: $color;
-	border-color: $border-color;
+	border-color: $background-color;
+	&:hover {
+		background-color: $hover-color;
+		border-color: $hover-color;
+		@if lightness($color) - lightness($hover-color) < 25% {
+			color: $white;
+		}
+	}
 }
 
 .button {
@@ -93,8 +93,16 @@ $bh-default-button-color: primary !default;
 		}
 	}
 
+	&.active {
+		background-color: transparent;
+		border-color: $blue;
+		color: $blue;
+	}
+
 	&.disabled,
-	&[disabled] {
+	&[disabled],
+	&.disabled:hover,
+	&[disabled]:hover {
 		background-color: $vog;
 		color: $whale;
 		border-color: $whale;
