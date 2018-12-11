@@ -123,6 +123,7 @@ $bh-default-button-color: primary !default;
 		background-color: $vog;
 		color: $whale;
 		border-color: $vog;
+		cursor: not-allowed;
 	}
 
 	&.ghost {
