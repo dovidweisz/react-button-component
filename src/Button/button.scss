@@ -98,12 +98,17 @@ $bh-default-button-color: primary !default;
 	}
 
 	&.active,
-	&.active:hover,
-	&:active,
-	&:active:hover {
+	&:active {
 		background-color: transparent;
 		border-color: $blue;
 		color: $blue;
+
+		&:hover {
+			background-color: $cesar;
+			color: $blue;
+
+			@include double-border(#0f3451);
+		}
 	}
 
 	&.activeAlt {
