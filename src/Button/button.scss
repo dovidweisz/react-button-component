@@ -49,6 +49,13 @@ $bh-default-button-color: primary !default;
 	}
 }
 
+@mixin double-border($color) {
+	border-width: 0;
+	position: relative;
+	border: 1px solid $color;
+	box-shadow: 0 0 0 1px $color;
+}
+
 .button {
 	@include bh-button;
 
@@ -127,6 +134,7 @@ $bh-default-button-color: primary !default;
 			background-color: $white;
 			color: $whale;
 			border: 1px solid $vog;
+			box-shadow: unset;
 		}
 	}
 
@@ -139,13 +147,15 @@ $bh-default-button-color: primary !default;
 		&:active,
 		&:active:hover {
 			background-color: rgba($sruli, 0.3);
-			border: 2px solid $sruli;
+
+			@include double-border($sruli);
 		}
 
 		&:hover {
 			background-color: $cesar;
-			border: 2px solid $sruli;
 			color: $midnight;
+
+			@include double-border($sruli);
 		}
 	}
 
@@ -160,11 +170,17 @@ $bh-default-button-color: primary !default;
 			background-color: rgba($blue, 0.3);
 			border: 1px solid rgba($blue, 0.3);
 			color: $midnight;
+			box-shadow: unset;
 		}
 
 		&:hover {
 			background-color: $cesar;
-			border: 2px solid #0f3451;
+
+			@include double-border(#0f3451);
 		}
 	}
+
+	transition-property: color, background-color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
 }
