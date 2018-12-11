@@ -18,14 +18,23 @@
 	}
 
 	&Intro {
-		display: flex;
+		display: block;
 	}
 }
 
 .buttonRow {
 	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+	// flex-direction: column;
+	// align-items: flex-start;
+}
+
+.rowTitle {
+	width: 75px;
+	padding: 1em;
+	height: 2.5em;
+	line-height: 2.5em;
+	text-align: left;
+	font-weight: 600;
 }
 
 .buttonContainer {

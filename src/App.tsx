@@ -4,11 +4,18 @@ import * as styles from "./App.scss";
 import logo from "./logo.svg";
 import { Button, buttonColor, IButtonBaseProps } from "./Button/Button";
 
+interface ColorName {
+	color: buttonColor;
+	colorName: string;
+}
+
 class App extends React.Component {
-	colors: Array<{ color: buttonColor; colorName: string }> = [
+	regColors: Array<ColorName> = [
 		{ color: "primary", colorName: "Primary" },
 		{ color: "secondary", colorName: "Secondary" },
 		{ color: "tertiary", colorName: "Tertiary" },
+	];
+	ghostColors: Array<ColorName> = [
 		{ color: "pinky", colorName: "Pinky" },
 		{ color: "blinky", colorName: "Blinky" },
 	];
@@ -25,17 +32,48 @@ class App extends React.Component {
 					<h1 className={styles.appTitle}>Welcome to Eddies Buttons React</h1>
 				</header>
 				<div className={styles.appIntro}>
-					{this.otherSettings.map(settings => (
-						<div className={styles.buttonRow}>
-							{this.colors.map(({ color, colorName }) => (
-								<div className={styles.buttonContainer} key={colorName}>
-									<Button color={color} {...settings}>
-										{colorName}
-									</Button>
-								</div>
+					<table>
+						<thead>
+							<tr>
+								<td />
+								<td>Default</td>
+								<td>Active / Selected</td>
+								<td>Disabled</td>
+							</tr>
+						</thead>
+						<tbody>
+							{this.regColors.map(({ color, colorName }) => (
+								<tr key={color}>
+									<td className={styles.rowTitle}>{colorName}</td>
+									{this.otherSettings.map((settings, i) => (
+										<td className={styles.buttonContainer} key={i}>
+											<Button color={color} {...settings}>
+												Button
+											</Button>
+										</td>
+									))}
+								</tr>
 							))}
-						</div>
-					))}
+							<tr>
+								<td colSpan={2}>Active / Selected alt</td>
+								<td className={styles.buttonContainer}>
+									<Button>Button</Button>
+								</td>
+							</tr>
+							{this.ghostColors.map(({ color, colorName }) => (
+								<tr key={color}>
+									<td className={styles.rowTitle}>{colorName}</td>
+									{this.otherSettings.map((settings, i) => (
+										<td className={styles.buttonContainer} key={i}>
+											<Button color={color} {...settings}>
+												Button
+											</Button>
+										</td>
+									))}
+								</tr>
+							))}
+						</tbody>
+					</table>
 				</div>
 			</div>
 		);
