@@ -168,7 +168,7 @@ $bh-default-button-color: primary !default;
 		&:active,
 		&:active:hover {
 			background-color: rgba($blue, 0.3);
-			border: 1px solid rgba($blue, 0.3);
+			border: 1px solid mix($blue, $white, 30%);
 			color: $midnight;
 			box-shadow: unset;
 		}
