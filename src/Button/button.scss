@@ -13,11 +13,9 @@ $bh-button-default-weight: $global-weight-bold !default;
 }
 
 $bh-button-colors: (
-	primary: $hawaii $white #386283,
-	secondary: $blue $white #233c5b,
-	tertiary: $water #1a5888 #233c5b,
-	// tertiary: transparent $blue $blue,
-		// tertiaryAlt: transparent $midnight $midnight,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+	primary: $hawaii $white #065879,
+	secondary: $blue $white #103552,
+	tertiary: $water #1a5888 #82888e,
 );
 $bh-default-button-color: primary !default;
 
@@ -29,7 +27,6 @@ $bh-default-button-color: primary !default;
 	border: rem-calc(1) solid;
 }
 @mixin bh-button-base {
-	// @include disable-mouse-outline; // requires whatinput js
 	display: inline-block;
 	text-align: center;
 	cursor: pointer;
@@ -106,7 +103,7 @@ $bh-default-button-color: primary !default;
 	&[disabled]:hover {
 		background-color: $vog;
 		color: $whale;
-		border-color: $whale;
+		border-color: $vog;
 	}
 
 	&.ghost {
