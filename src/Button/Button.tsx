@@ -23,6 +23,7 @@ export interface IButtonBaseProps {
 	color?: buttonColor;
 	ghost?: boolean;
 	active?: boolean;
+	activeAlt?: boolean;
 	disabled?: boolean;
 	small?: boolean;
 	width?: "wide" | "xWide" | "fitWidth";
@@ -41,6 +42,7 @@ const _ButtonBase: React.SFC<
 > = ({
 	color,
 	active,
+	activeAlt,
 	disabled,
 	small,
 	width,
@@ -63,6 +65,7 @@ const _ButtonBase: React.SFC<
 			[widthClass]: !small && !!width,
 			[classes.large]: !small && !!large,
 			[classes.active]: active,
+			[classes.activeAlt]: activeAlt,
 		},
 	]);
 	return children({ ...otherAttributes, className, disabled });

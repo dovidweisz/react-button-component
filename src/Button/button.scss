@@ -91,10 +91,17 @@ $bh-default-button-color: primary !default;
 	}
 
 	&.active,
-	&.active:hover {
+	&.active:hover,
+	&:active,
+	&:active:hover {
 		background-color: transparent;
 		border-color: $blue;
 		color: $blue;
+	}
+
+	&.activeAlt {
+		background-color: $sruli;
+		border-color: $sruli;
 	}
 
 	&.disabled,
@@ -128,7 +135,9 @@ $bh-default-button-color: primary !default;
 		border-color: $whale;
 
 		&.active,
-		&.active:hover {
+		&.active:hover,
+		&:active,
+		&:active:hover {
 			background-color: rgba($sruli, 0.3);
 			border: 2px solid $sruli;
 		}
@@ -145,7 +154,9 @@ $bh-default-button-color: primary !default;
 		border-color: $blue;
 
 		&.active,
-		&.active:hover {
+		&.active:hover,
+		&:active,
+		&:active:hover {
 			background-color: rgba($blue, 0.3);
 			border: 1px solid rgba($blue, 0.3);
 			color: $midnight;

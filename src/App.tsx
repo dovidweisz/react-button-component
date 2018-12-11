@@ -57,7 +57,7 @@ class App extends React.Component {
 							<tr>
 								<td colSpan={2}>Active / Selected alt</td>
 								<td className={styles.buttonContainer}>
-									<Button>Button</Button>
+									<Button activeAlt>Button</Button>
 								</td>
 							</tr>
 							{this.ghostColors.map(({ color, colorName }) => (
