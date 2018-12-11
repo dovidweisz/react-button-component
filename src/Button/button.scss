@@ -24,7 +24,7 @@ $bh-default-button-color: primary !default;
 	@include sync-line-height($bh-button-height);
 	padding: 0 2em;
 	font-weight: $bh-button-default-weight;
-	border: rem-calc(1) solid;
+	border: 1px solid;
 }
 @mixin bh-button-base {
 	display: inline-block;
