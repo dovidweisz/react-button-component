@@ -1,15 +1,49 @@
 import * as React from "react";
-import * as styles from "./App.scss";
+import { TwitterPicker } from "react-color";
 
+import * as styles from "./App.scss";
 import logo from "./logo.svg";
 import { Button, buttonColor, IButtonBaseProps } from "./Button/Button";
+
+const pickerColors = [
+	"#000",
+	"#333",
+	"#666",
+	"#9A9A9A",
+	"#CDCDCD",
+	"#E7E7E7",
+	"#F0F4F8",
+	"#FFF",
+	"#d9e3ed",
+	"#334455",
+	"#1a5888",
+	"#007ab8",
+	"#990000",
+	"#db8749",
+	"#ff9933",
+	"#769e2d",
+	"#0a92ca",
+	"#e54c3c",
+	"#e5f3d8",
+	"#f2a99b",
+];
 
 interface ColorName {
 	color: buttonColor;
 	colorName: string;
 }
 
-class App extends React.Component {
+interface AppState {
+	color: string;
+}
+
+class App extends React.Component<{}, AppState> {
+	constructor(props, context) {
+		super(props, context);
+		this.state = {
+			color: "#FFF",
+		};
+	}
 	regColors: Array<ColorName> = [
 		{ color: "primary", colorName: "Primary" },
 		{ color: "secondary", colorName: "Secondary" },
@@ -26,7 +60,7 @@ class App extends React.Component {
 	];
 	public render() {
 		return (
-			<div className={styles.app}>
+			<div className={styles.app} style={{ backgroundColor: this.state.color }}>
 				<header className={styles.appHeader}>
 					<img src={logo} className={styles.appLogo} alt="logo" />
 					<h1 className={styles.appTitle}>Welcome to Eddies Buttons React</h1>
@@ -74,10 +108,19 @@ class App extends React.Component {
 							))}
 						</tbody>
 					</table>
+					<p style={{ textAlign: "left" }}>Select a background color:</p>
+					<TwitterPicker
+						color={this.state.color}
+						colors={pickerColors}
+						onChangeComplete={this.handleOnChangeComplete}
+						triangle="hide"
+						width="315px"
+					/>
 				</div>
 			</div>
 		);
 	}
+	handleOnChangeComplete = ({ hex }) => this.setState({ color: hex });
 }
 
 export default App;

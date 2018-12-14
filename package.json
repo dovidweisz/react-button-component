@@ -7,6 +7,7 @@
     "@dovidweisz/react-scripts-ts-scss-modules": "2.16.0",
     "classnames": "^2.2.6",
     "react": "^16.6.3",
+    "react-color": "^2.14.1",
     "react-dom": "^16.6.3"
   },
   "scripts": {
@@ -22,6 +23,7 @@
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.12",
     "@types/react": "^16.7.13",
+    "@types/react-color": "^2.13.6",
     "@types/react-dom": "^16.0.11",
     "gh-pages": "^2.0.1",
     "prettier": "^1.15.3",
