@@ -12,6 +12,10 @@ const classes: {
 
 // import * as classes from "./button.scss";
 
+type ButtonBaseAddonType = HTMLAttributes<HTMLElement> & {
+	children: (props: any) => any;
+};
+
 export type buttonColor =
 	| "primary"
 	| "secondary"
@@ -19,12 +23,14 @@ export type buttonColor =
 	| "pinky"
 	| "blinky";
 
-export interface IButtonBaseProps {
+export interface IButtonThemeBaseProps {
 	color?: buttonColor;
-	ghost?: boolean;
 	active?: boolean;
 	activeAlt?: boolean;
 	disabled?: boolean;
+}
+
+export interface IButtonBaseProps extends IButtonThemeBaseProps {
 	small?: boolean;
 	width?: "wide" | "xWide" | "fitWidth";
 	large?: boolean;
@@ -36,39 +42,60 @@ export type IInputButtonProps = IButtonBaseProps & {
 	type?: "button" | "submit";
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const _ButtonBase: React.SFC<
-	IButtonBaseProps &
-		HTMLAttributes<HTMLElement> & { children: (props: any) => any }
+export const ButtonThemeBase: React.SFC<
+	IButtonThemeBaseProps & ButtonBaseAddonType
 > = ({
 	color,
 	active,
 	activeAlt,
 	disabled,
-	small,
-	width,
-	large,
 	className,
 	children,
 	...otherAttributes
 }) => {
 	const colorClass = color ? classes[color] : "";
-	const widthClass = width ? classes[width] : "";
 	const parentClassName = className ? className : "";
 	className = classNames([
-		classes.button,
 		colorClass,
 		parentClassName,
 		{
 			[classes.disabled]: disabled,
 			[classes.ghost]: color === "pinky" || color === "blinky",
-			[classes.small]: small,
-			[widthClass]: !small && !!width,
-			[classes.large]: !small && !!large,
 			[classes.active]: active,
 			[classes.activeAlt]: activeAlt,
 		},
 	]);
 	return children({ ...otherAttributes, className, disabled });
+};
+
+const _ButtonBase: React.SFC<IButtonBaseProps & ButtonBaseAddonType> = ({
+	small,
+	width,
+	large,
+	children,
+	className,
+	...otherAttributes
+}) => {
+	const widthClass = width ? classes[width] : "";
+	const parentClassName = className ? className : "";
+	className = classNames([
+		classes.button,
+		parentClassName,
+		{
+			[classes.small]: small,
+			[widthClass]: !small && !!width,
+			[classes.large]: !small && !!large,
+		},
+	]);
+	return (
+		<ButtonThemeBase {...otherAttributes} className={className}>
+			{({ className, ...otherAttributes }) =>
+				children({ ...otherAttributes, className })
+			}
+		</ButtonThemeBase>
+	);
+
+	//
 };
 
 export const ButtonBase = _ButtonBase;
