@@ -19,21 +19,21 @@ $bh-button-colors: (
 );
 $bh-default-button-color: primary !default;
 
-@mixin bh-button {
-	@include bh-button-base;
+@mixin button-layout {
 	@include sync-line-height($bh-button-height);
 	padding: 0 2em;
 	font-weight: $bh-button-default-weight;
-	border: 1px solid;
-}
-@mixin bh-button-base {
 	display: inline-block;
 	text-align: center;
-	cursor: pointer;
-	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 	vertical-align: middle;
 	border-radius: $button-radius;
 	margin: $button-margin;
+}
+
+@mixin button-theme {
+	border: 1px solid;
+	cursor: pointer;
+	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 }
 
 @mixin bh-style-button($background-color, $color, $hover-color) {
@@ -50,15 +50,13 @@ $bh-default-button-color: primary !default;
 }
 
 @mixin double-border($color) {
-	border-width: 0;
 	position: relative;
 	border: 1px solid $color;
 	box-shadow: 0 0 0 1px $color;
 }
 
-.button {
-	@include bh-button;
-
+.buttonLayout {
+	@include button-layout;
 	// width modifiers
 	&.wide {
 		padding: 0 3em;
@@ -87,6 +85,11 @@ $bh-default-button-color: primary !default;
 		padding: 0 4em;
 		@include sync-line-height(3em);
 	}
+}
+
+.buttonTheme {
+	@include button-theme;
+
 	$-default-color-list: map_get($bh-button-colors, $bh-default-button-color);
 	@include bh-style-button($-default-color-list...);
 	@each $name, $color in $bh-button-colors {

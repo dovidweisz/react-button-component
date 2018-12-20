@@ -56,6 +56,7 @@ export const ButtonThemeBase: React.SFC<
 	const colorClass = color ? classes[color] : "";
 	const parentClassName = className ? className : "";
 	className = classNames([
+		classes.buttonTheme,
 		colorClass,
 		parentClassName,
 		{
@@ -79,7 +80,7 @@ const _ButtonBase: React.SFC<IButtonBaseProps & ButtonBaseAddonType> = ({
 	const widthClass = width ? classes[width] : "";
 	const parentClassName = className ? className : "";
 	className = classNames([
-		classes.button,
+		classes.buttonLayout,
 		parentClassName,
 		{
 			[classes.small]: small,
