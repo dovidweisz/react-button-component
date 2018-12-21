@@ -33,6 +33,9 @@ $bh-default-button-color: primary !default;
 @mixin button-theme {
 	border: 1px solid;
 	cursor: pointer;
+	transition-property: color, background-color border-color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
 	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 }
 
@@ -188,8 +191,4 @@ $bh-default-button-color: primary !default;
 			@include double-border(#0f3451);
 		}
 	}
-
-	transition-property: color, background-color;
-	transition-duration: 0.2s;
-	transition-timing-function: ease-in-out;
 }
