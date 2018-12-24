@@ -90,9 +90,7 @@ const _ButtonBase: React.SFC<IButtonBaseProps & ButtonBaseAddonType> = ({
 	]);
 	return (
 		<ButtonThemeBase {...otherAttributes} className={className}>
-			{({ className, ...otherAttributes }) =>
-				children({ ...otherAttributes, className })
-			}
+			{props => children(props)}
 		</ButtonThemeBase>
 	);
 
