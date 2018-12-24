@@ -73,7 +73,6 @@ const _ButtonBase: React.SFC<IButtonBaseProps & ButtonBaseAddonType> = ({
 	small,
 	width,
 	large,
-	children,
 	className,
 	...otherAttributes
 }) => {
@@ -88,11 +87,7 @@ const _ButtonBase: React.SFC<IButtonBaseProps & ButtonBaseAddonType> = ({
 			[classes.large]: !small && !!large,
 		},
 	]);
-	return (
-		<ButtonThemeBase {...otherAttributes} className={className}>
-			{props => children(props)}
-		</ButtonThemeBase>
-	);
+	return <ButtonThemeBase {...otherAttributes} className={className} />;
 
 	//
 };
