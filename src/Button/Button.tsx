@@ -94,19 +94,17 @@ const _ButtonBase: React.SFC<IButtonBaseProps & ButtonBaseAddonType> = ({
 
 export const ButtonBase = _ButtonBase;
 
-export const Button = (props: IButtonProps) => {
-	const { children, ...otherAttributes } = props;
-	return (
-		<ButtonBase {...otherAttributes}>
-			{props => <button {...props}>{children}</button>}
-		</ButtonBase>
-	);
-};
+export const Button: React.SFC<IButtonProps> = ({
+	children,
+	...otherAttributes
+}) => (
+	<ButtonBase {...otherAttributes}>
+		{props => <button {...props}>{children}</button>}
+	</ButtonBase>
+);
 
-export const InputButton = (props: IInputButtonProps) => {
-	return (
-		<ButtonBase {...props}>
-			{props => <input type="button" {...props} />}
-		</ButtonBase>
-	);
-};
+export const InputButton: React.SFC<IInputButtonProps> = props => (
+	<ButtonBase {...props}>
+		{props => <input type="button" {...props} />}
+	</ButtonBase>
+);
